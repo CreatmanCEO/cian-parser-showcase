@@ -1,0 +1,270 @@
+{
+  "search_profiles": [
+    {
+      "name": "Budget Studio Apartment",
+      "description": "Small studio for rent in central districts",
+      "active": true,
+      "filters": {
+        "deal_type": "rent",
+        "price": {
+          "min": 15000,
+          "max": 30000,
+          "currency": "RUB"
+        },
+        "location": {
+          "city": "Санкт-Петербург",
+          "districts": ["Центральный", "Адмиралтейский"],
+          "metro_stations": ["Площадь Восстания", "Маяковская", "Чернышевская"],
+          "max_metro_distance_minutes": 10
+        },
+        "property": {
+          "type": "apartment",
+          "rooms": [0],
+          "area": {
+            "min": 18,
+            "max": 35
+          },
+          "floor": {
+            "not_first": true,
+            "not_last": false
+          }
+        },
+        "amenities": {
+          "furniture": true,
+          "internet": true
+        }
+      },
+      "notifications": {
+        "telegram": {
+          "enabled": true,
+          "chat_id": "your-telegram-chat-id"
+        },
+        "email": {
+          "enabled": false,
+          "address": "your-email@example.com"
+        }
+      },
+      "schedule": {
+        "enabled": true,
+        "interval_minutes": 60
+      }
+    },
+    {
+      "name": "Family Apartment Purchase",
+      "description": "3-room apartment for family in quiet districts",
+      "active": true,
+      "filters": {
+        "deal_type": "sale",
+        "price": {
+          "min": 5000000,
+          "max": 8000000,
+          "currency": "RUB"
+        },
+        "location": {
+          "city": "Санкт-Петербург",
+          "districts": ["Приморский", "Калининский", "Выборгский"],
+          "metro_stations": ["Проспект Просвещения", "Озерки", "Комендантский"],
+          "max_metro_distance_minutes": 15
+        },
+        "property": {
+          "type": "apartment",
+          "rooms": [3],
+          "area": {
+            "min": 65,
+            "max": 85
+          },
+          "kitchen_area": {
+            "min": 10
+          },
+          "floor": {
+            "not_first": true,
+            "not_last": true
+          },
+          "total_floors": {
+            "min": 5,
+            "max": 16
+          }
+        },
+        "building": {
+          "elevator": true,
+          "parking": true,
+          "construction_year": {
+            "min": 2010
+          }
+        },
+        "amenities": {
+          "balcony": true,
+          "separate_bathroom": true
+        }
+      },
+      "notifications": {
+        "telegram": {
+          "enabled": true,
+          "chat_id": "your-telegram-chat-id",
+          "include_photos": true
+        },
+        "email": {
+          "enabled": true,
+          "address": "your-email@example.com",
+          "digest": "daily"
+        }
+      },
+      "schedule": {
+        "enabled": true,
+        "interval_minutes": 30
+      }
+    },
+    {
+      "name": "Investment Property",
+      "description": "Small apartments for investment in developing areas",
+      "active": true,
+      "filters": {
+        "deal_type": "sale",
+        "price": {
+          "min": 2500000,
+          "max": 4000000,
+          "currency": "RUB",
+          "price_per_sqm": {
+            "max": 150000
+          }
+        },
+        "location": {
+          "city": "Санкт-Петербург",
+          "districts": ["Фрунзенский", "Московский", "Невский"],
+          "metro_stations": ["Купчино", "Звездная", "Московская", "Проспект Большевиков"],
+          "max_metro_distance_minutes": 20
+        },
+        "property": {
+          "type": "apartment",
+          "rooms": [1, 2],
+          "area": {
+            "min": 30,
+            "max": 50
+          }
+        },
+        "building": {
+          "construction_year": {
+            "min": 2015
+          }
+        },
+        "special_conditions": {
+          "new_building": true,
+          "developer_sale": true
+        }
+      },
+      "notifications": {
+        "telegram": {
+          "enabled": true,
+          "chat_id": "your-telegram-chat-id",
+          "include_photos": true,
+          "include_price_analysis": true
+        },
+        "email": {
+          "enabled": false
+        }
+      },
+      "schedule": {
+        "enabled": true,
+        "interval_minutes": 120
+      },
+      "analytics": {
+        "track_price_changes": true,
+        "compare_with_market_avg": true,
+        "alert_on_price_drop_percent": 5
+      }
+    },
+    {
+      "name": "Luxury Apartment",
+      "description": "High-end apartment in premium locations",
+      "active": false,
+      "filters": {
+        "deal_type": "sale",
+        "price": {
+          "min": 15000000,
+          "max": 30000000,
+          "currency": "RUB"
+        },
+        "location": {
+          "city": "Санкт-Петербург",
+          "districts": ["Центральный", "Петроградский"],
+          "metro_stations": ["Адмиралтейская", "Невский проспект", "Гостиный двор", "Петроградская"],
+          "max_metro_distance_minutes": 10
+        },
+        "property": {
+          "type": "apartment",
+          "rooms": [3, 4, 5],
+          "area": {
+            "min": 100,
+            "max": 200
+          },
+          "kitchen_area": {
+            "min": 15
+          },
+          "ceiling_height": {
+            "min": 3.0
+          }
+        },
+        "building": {
+          "elevator": true,
+          "parking": true,
+          "security": true,
+          "concierge": true,
+          "construction_year": {
+            "min": 2015
+          }
+        },
+        "amenities": {
+          "balcony": true,
+          "separate_bathroom": true,
+          "renovation": "designer",
+          "view": ["Neva", "park", "historical_center"]
+        }
+      },
+      "notifications": {
+        "telegram": {
+          "enabled": true,
+          "chat_id": "your-telegram-chat-id",
+          "include_photos": true,
+          "priority": "high"
+        },
+        "email": {
+          "enabled": true,
+          "address": "your-email@example.com",
+          "digest": "immediate"
+        }
+      },
+      "schedule": {
+        "enabled": true,
+        "interval_minutes": 60
+      }
+    }
+  ],
+  "global_settings": {
+    "anti_detection": {
+      "use_proxies": true,
+      "proxy_list": ["http://proxy1.example.com:8080", "http://proxy2.example.com:8080"],
+      "rotate_user_agents": true,
+      "random_delays": {
+        "min_seconds": 2,
+        "max_seconds": 5
+      },
+      "max_retries": 3
+    },
+    "performance": {
+      "max_concurrent_requests": 5,
+      "timeout_seconds": 30,
+      "cache_results_minutes": 10
+    },
+    "storage": {
+      "database_path": "./data/cian_listings.db",
+      "keep_history_days": 90,
+      "auto_cleanup": true
+    },
+    "logging": {
+      "level": "INFO",
+      "file": "./logs/cian_parser.log",
+      "max_size_mb": 50,
+      "backup_count": 5
+    }
+  }
+}
