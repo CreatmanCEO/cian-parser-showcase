@@ -38,6 +38,69 @@ Prospective clients ask "what does it actually do, and how is it configured?". T
 | Notifications | Telegram Bot API |
 | Deployment | systemd / Docker (client choice) |
 
+## Features
+
+- Scheduled scraping with configurable intervals (every N minutes, specific hours, or cron expressions)
+- Rotating proxy pool with automatic health checks and failover
+- User-agent randomization and request pacing to avoid detection
+- Telegram notifications with listing photos, price, area, floor, and a direct link
+- Price history tracking per listing for trend analysis
+- Duplicate detection across runs — only new or updated listings trigger alerts
+- Filter engine supporting nested boolean logic (AND/OR/NOT)
+- Multi-user support — each user maintains independent filters and notification channels
+
+## Filter options
+
+Filters are defined in JSON and support the following fields:
+
+| Field | Type | Example |
+|---|---|---|
+| `price_min` / `price_max` | integer | `30000` / `80000` |
+| `rooms` | list | `[1, 2]` |
+| `area_min` / `area_max` | float | `35.0` / `90.0` |
+| `floor_min` / `floor_max` | integer | `2` / `25` |
+| `not_first_floor` | boolean | `true` |
+| `not_last_floor` | boolean | `true` |
+| `districts` | list | `["Presnensky", "Tverskoy"]` |
+| `metro_stations` | list | `["Barrikadnaya"]` |
+| `max_km_from_metro` | float | `1.5` |
+| `keywords_exclude` | list | `["auction", "commercial"]` |
+
+See [`examples/filters.example.json`](examples/filters.example.json) for a complete sample.
+
+## Alert configuration
+
+Telegram alerts are configured per user:
+
+```json
+{
+  "telegram_chat_id": "123456789",
+  "notify_on": "new_listing",
+  "quiet_hours": { "from": "23:00", "to": "07:00" },
+  "batch_interval_minutes": 15,
+  "include_photos": true,
+  "max_photos_per_listing": 3
+}
+```
+
+Alerts can be batched to avoid notification spam during high-volume periods.
+
+## Architecture overview
+
+```
+APScheduler (cron)
+      |
+  Fetcher (httpx + proxy pool)
+      |
+  HTML Parser (lxml / BS4)
+      |
+  Filter Engine --> Deduper (SQLite/PG)
+      |
+  Notifier (Telegram Bot API)
+      |
+  Analytics (price history store)
+```
+
 ## Examples
 
 - [`examples/filters.example.json`](examples/filters.example.json) — filter configuration shape
